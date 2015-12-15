@@ -1,4 +1,4 @@
-heat_template_version: 2014-10-16 
+heat_template_version: 2014-10-16
 
 description: |
   Test template for Trove resource capabilities
@@ -19,6 +19,7 @@ resources:
       datastore_type: mariadb
       flavor: 1GB Instance
       size: 10
+      datastore_version: 10
       databases:
       - name: test_data
       users:
@@ -33,6 +34,7 @@ resources:
       flavor: 2GB Instance
       size: 5
       datastore_type: mariadb
+      datastore_version: 10
       replica_of: { get_resource: service_db }
 
 outputs:
@@ -43,11 +45,11 @@ outputs:
 
   "Master DB hostname":
     value: { get_attr: [ service_db, hostname ] }
-    description: Hostname of Master DB 
+    description: Hostname of Master DB
 
   "Master DB API endpoint":
     value: { get_attr: [ service_db, href ] }
-    description: Api endpoint 
+    description: Api endpoint
 
   "Slave DB ID":
     value: { get_resource: db_replica }
@@ -55,8 +57,8 @@ outputs:
 
   "Slave DB hostname":
     value: { get_attr: [ db_replica, hostname ] }
-    description: Hostname of Slave DB 
+    description: Hostname of Slave DB
 
   "Slave DB API endpoint":
     value: { get_attr: [ db_replica, href ] }
-    description: Api endpoint 
+    description: Api endpoint
