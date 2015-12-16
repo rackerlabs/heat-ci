@@ -19,7 +19,7 @@ resources:
     properties:
       length: 13
       character_classes:
-      - class: letters
+      - class: lowercase
 
   content_config:
     type: OS::Heat::CloudConfig
@@ -62,14 +62,14 @@ resources:
         str_replace:
           template: domain.com
           params:
-            domain: { get_param: "OS::stack_name" }
+            domain: { get_resource: random_domain }
       emailAddress: heat@lists.rackspace.com
       records:
       - name:
           str_replace:
             template: www.domain.com
             params:
-              domain: { get_param: "OS::stack_name" }
+              domain: { get_resource: random_domain }
         type: CNAME
         data: { get_attr: [ cdn, access_url ] }
 
@@ -81,13 +81,13 @@ resources:
         str_replace:
           template: stack-cdn
           params:
-            stack: { get_param: "OS::stack_name" }
+            stack: { get_resource: random_domain }
       domains:
       - domain:
           str_replace:
             template: www.domain.com
             params:
-              domain: { get_param: "OS::stack_name" }
+              domain: { get_resource: random_domain }
       origins:
       - origin: { get_attr: [content, accessIPv4] }
       caching:
