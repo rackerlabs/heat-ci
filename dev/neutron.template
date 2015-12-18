@@ -55,6 +55,14 @@ resources:
         stack-name: { get_param: "OS::stack_name" }
 
 outputs:
-  "Network name":
+  "Network UUID":
     value: { get_resource: network }
+    description: Neutron network UUID
+
+  "Network name":
+    value:
+      str_replace:
+        template: stack-net
+        params:
+          stack: { get_param: "OS::stack_name" }
     description: Neutron network name
