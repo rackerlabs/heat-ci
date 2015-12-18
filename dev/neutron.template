@@ -54,9 +54,7 @@ resources:
         rax-heat: { get_param: "OS::stack_id" }
         stack-name: { get_param: "OS::stack_name" }
 
-      
-
-
-      
-      
-    
+outputs:
+  "Network name":
+    value: { get_resource: network }
+    description: Neutron network name
