@@ -57,7 +57,7 @@ resources:
       name: kitchen_sink_ops01
       metadata:
         rax-heat: { get_param: "OS::stack_id" }
-      image: 042395fc-728c-4763-86f9-9b0cacb00701 #CentOS 6.5
+      image: 9d29f10e-4fc2-4556-8d25-532d1784329a # CentOS 7
       flavor: { get_param: devops_flavor }
       key_name: { get_resource: access_key }
       networks:
@@ -133,7 +133,7 @@ resources:
   instance1:
     type: OS::Nova::Server
     properties:
-      image: 4b14a92e-84c8-4770-9245-91ecb8501cc2  # CentOS
+      image: 9d29f10e-4fc2-4556-8d25-532d1784329a # CentOS 7
       flavor: 1 GB Performance
       key_name: { get_resource: access_key }
       metadata:
