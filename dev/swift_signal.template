@@ -21,7 +21,7 @@ resources:
   instance1:
     type: OS::Nova::Server
     properties:
-      image: 4b14a92e-84c8-4770-9245-91ecb8501cc2  # CentOS
+      image: CentOS 7 (PVHVM)
       flavor: 1 GB Performance
       key_name: { get_resource: access_key }
       metadata:
