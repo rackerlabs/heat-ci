@@ -15,7 +15,7 @@ resources:
         type: OS::Nova::Server
         properties:
           name: "service_engine_%index%"
-          image: 6f29d6a6-9972-4ae0-aa80-040fa2d6a9cf # Ubuntu 14.04 LTS (Trusty Tahr) (PVHVM)
+          image: Ubuntu 14.04 LTS (Trusty Tahr) (PVHVM)
           flavor: 4 GB Performance 
           networks:
           - network: "00000000-0000-0000-0000-000000000000"
