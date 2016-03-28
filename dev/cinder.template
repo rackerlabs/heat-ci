@@ -30,8 +30,8 @@ resources:
       name: bfv-server-2 
       metadata:
         rax-heat: { get_param: "OS::stack_id" }
-      image: 042395fc-728c-4763-86f9-9b0cacb00701 #CentOS 6.5
-      flavor: 4 GB Performance 
+      image: CentOS 7 (PVHVM)
+      flavor: 4 GB Performance
 
   devops_volume:
     type: OS::Cinder::Volume
