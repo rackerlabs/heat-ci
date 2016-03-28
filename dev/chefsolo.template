@@ -24,7 +24,7 @@ resources:
       name: chefhost 
       metadata:
         rax-heat: { get_param: "OS::stack_id" }
-      image: 042395fc-728c-4763-86f9-9b0cacb00701 #CentOS 6.5
+      image: CentOS 7 (PVHVM)
       flavor: 4 GB Performance 
       key_name: { get_resource: access_key }
       networks:
