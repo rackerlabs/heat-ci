@@ -1,0 +1,77 @@
+heat_template_version: 2014-10-16
+
+description: |
+  Deploy Nginx server with Ansible
+
+parameters:
+
+  image:
+    type: string
+    default: f4bbbce2-50b0-4b07-bf09-96c175a45f4b
+    constraints:
+    - allowed_values:
+      - f4bbbce2-50b0-4b07-bf09-96c175a45f4b
+
+resources:
+
+  server_pw:
+    type: OS::Heat::RandomString
+
+  nginx_config:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: ansible
+      config: |
+        ---
+        - name: Install and run Nginx
+          connection: local
+          hosts: localhost
+          tasks:
+           - name: Install Nginx
+             apt: pkg=nginx state=installed update_cache=true
+             notify:
+              - Start Nginx
+          handlers:
+           - name: Start Nginx
+             service: name=nginx state=started
+
+  deploy_nginx:
+    type: OS::Heat::SoftwareDeployment
+    properties:
+      signal_transport: TEMP_URL_SIGNAL
+      config:
+        get_resource: nginx_config
+      server:
+        get_resource: server
+
+  server:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      admin_pass: { get_attr: [ server_pw, value ] }
+      flavor: 2 GB Performance
+      software_config_transport: POLL_TEMP_URL
+      config_drive: true
+      user_data_format: SOFTWARE_CONFIG
+
+outputs:
+  stdout:
+    description: Ansible Output
+    value:
+      get_attr: [ deploy_nginx, deploy_stdout ]
+  stderr:
+    description: Ansible Error Output
+    value:
+      get_attr: [ deploy_nginx, deploy_stderr ]
+  status_code:
+    description: Exit Code
+    value:
+      get_attr: [ deploy_nginx, deploy_status_code ]
+  server_ip:
+    description: Server IP Address
+    value:
+      get_attr: [ server, accessIPv4 ]
+  server_password:
+    description: Server Password
+    value:
+      get_attr: [ server_pw, value ]
