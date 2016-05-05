@@ -18,7 +18,7 @@ resources:
       clusterLogin:  heatuser
       flavor:        Small Hadoop Instance
       numSlaveNodes: 1
-      publicKeyName: { get_param: "OS::stack_name" }
+      publicKeyName: { get_resource: access_key }
       publicKey: { get_attr: [ access_key, public_key ] }
 
 outputs:
