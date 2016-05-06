@@ -17,6 +17,7 @@ resources:
         - libffi-dev
         - libxml2-dev
         - libxslt1-dev
+        - wrapt
 
   install_agents:
     type: "OS::Heat::SoftwareConfig"
