@@ -17,7 +17,6 @@ resources:
         - libffi-dev
         - libxml2-dev
         - libxslt1-dev
-        - wrapt
 
   install_agents:
     type: "OS::Heat::SoftwareConfig"
@@ -26,7 +25,7 @@ resources:
       config: |
         #!/bin/bash
         set -eux
-        pip install os-collect-config os-apply-config os-refresh-config dib-utils heat-cfntools
+        pip install wrapt os-collect-config os-apply-config os-refresh-config dib-utils heat-cfntools
         cfn-create-aws-symlinks
 
   configure:
