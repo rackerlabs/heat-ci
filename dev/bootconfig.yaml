@@ -25,7 +25,7 @@ resources:
       config: |
         #!/bin/bash
         set -eux
-        pip install wrapt os-collect-config os-apply-config os-refresh-config dib-utils heat-cfntools
+        pip install os-collect-config os-apply-config os-refresh-config dib-utils heat-cfntools wrapt monotonic pytz funcsigs positional
         cfn-create-aws-symlinks
 
   configure:
