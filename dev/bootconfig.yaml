@@ -6,6 +6,7 @@ resources:
     type: "OS::Heat::CloudConfig"
     properties:
       cloud_config:
+        package_update: true
         apt_upgrade: true
         packages:
         - python-pip
