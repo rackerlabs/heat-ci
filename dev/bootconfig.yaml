@@ -55,7 +55,7 @@ resources:
             cachedir = {{cachedir}}
             {{/cachedir}}
             {{#collectors}}
-            collectors = {{collectors}}
+            collectors = {{.}}
             {{/collectors}}
 
             {{#cfn}}
