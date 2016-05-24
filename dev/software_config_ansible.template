@@ -10,6 +10,7 @@ parameters:
     default: 9ab07706-4b9f-41ad-a8f5-8b4fda2e40f7
     constraints:
     - allowed_values:
+      - 398c5f65-23e2-44da-97d8-d28ff5ec583b  # CentOS
       - 9ab07706-4b9f-41ad-a8f5-8b4fda2e40f7  # Ubuntu
 
 resources:
