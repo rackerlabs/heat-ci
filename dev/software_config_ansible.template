@@ -7,11 +7,10 @@ parameters:
 
   image:
     type: string
-    default: ca228037-d6b4-4ce7-a4a2-02c0db7cef85
+    default: 031f57cd-aeae-4da1-b4c2-cb0dc40e5472
     constraints:
     - allowed_values:
-      - 398c5f65-23e2-44da-97d8-d28ff5ec583b  # CentOS
-      - ca228037-d6b4-4ce7-a4a2-02c0db7cef85  # Ubuntu
+      - 031f57cd-aeae-4da1-b4c2-cb0dc40e5472  # Ubuntu
 
 resources:
 
