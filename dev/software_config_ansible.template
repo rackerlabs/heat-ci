@@ -7,10 +7,10 @@ parameters:
 
   image:
     type: string
-    default: 031f57cd-aeae-4da1-b4c2-cb0dc40e5472
+    default: 9ab07706-4b9f-41ad-a8f5-8b4fda2e40f7
     constraints:
     - allowed_values:
-      - 031f57cd-aeae-4da1-b4c2-cb0dc40e5472  # Ubuntu
+      - 9ab07706-4b9f-41ad-a8f5-8b4fda2e40f7  # Ubuntu
 
 resources:
 
