@@ -1,0 +1,35 @@
+heat_template_version: 2013-05-23
+
+resources:
+  ha:
+    type: Rackspace::CloudDatabase::HAInstance
+    properties:
+      name:
+        str_replace:
+          template: stack-ha-instance
+          params:
+            stack: { get_param: "OS::stack_name" }
+      datastore: MYSQL
+      replica_source:
+        name:
+          str_replace:
+            template: stack-ha-source
+            params:
+              stack: { get_param: "OS::stack_name" }
+        volume_size: 1
+        flavorRef: 1GB Instance
+      replicas:
+        - name:
+            str_replace:
+              template: stack-ha-replica1
+              params:
+                stack: { get_param: "OS::stack_name" }
+          volume_size: 1
+          flavorRef: 1GB Instance
+        - name:
+            str_replace:
+              template: stack-ha-replica2
+              params:
+                stack: { get_param: "OS::stack_name" }
+          volume_size: 1
+          flavorRef: 1GB Instance
